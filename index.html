@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday my Love</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script src="booklet/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="booklet/jquery.booklet.1.1.0.min.js" type="text/javascript"></script>
+
+    <link href="booklet/jquery.booklet.1.1.0.css" type="text/css" rel="stylesheet" media="screen" />
+
+
+    <style>
+        @import url('http://fonts.cdnfonts.com/css/sour-candy');
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .booklet {
+            width: 900px;
+            height: 607px;
+            position: relative;
+            margin: 0 auto 10px;
+            -moz-box-shadow: 0px 0px 1px #fff;
+            -webkit-box-shadow: 0px 0px 1px #fff;
+            box-shadow: 0px 0px 1px #fff;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+        
+        .booklet .b-wrap-left {
+            background: #fff url(images/left_bg.jpg) no-repeat top left;
+            -webkit-border-top-left-radius: 10px;
+            -webkit-border-bottom-left-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            -moz-border-radius-bottomleft: 10px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        
+        .booklet .b-wrap-right {
+            background: #efefef url(images/right_bg.jpg) no-repeat top left;
+            -webkit-border-top-right-radius: 10px;
+            -webkit-border-bottom-right-radius: 10px;
+            -moz-border-radius-topright: 10px;
+            -moz-border-radius-bottomright: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        
+        .booklet .b-counter {
+            bottom: 10px;
+            position: absolute;
+            display: block;
+            width: 90%;
+            height: 20px;
+            border-top: 1px solid #ddd;
+            color: #222;
+            text-align: center;
+            font-size: 12px;
+            padding: 5px 0 0;
+            background: transparent;
+            -moz-box-shadow: 0px -1px 1px #fff;
+            -webkit-box-shadow: 0px -1px 1px #fff;
+            box-shadow: 0px -1px 1px #fff;
+            opacity: 0.8;
+        }
+        
+        .book_wrapper {
+            margin: 0 auto;
+            padding-top: 50px;
+            width: 905px;
+            height: 540px;
+            position: relative;
+            background: transparent url(images/bg.png) no-repeat 9px 27px;
+        }
+        
+        .book_wrapper h1 {
+            color: orange;
+            margin: 5px 5px 5px 15px;
+            font-size: 24px;
+            background: transparent url() no-repeat bottom left;
+            padding-bottom: 7px;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+        
+        .book_wrapper p {
+            font-size: 15px;
+            margin: 5px 5px 5px 15px;
+        }
+        
+        .book_wrapper a.article,
+        .book_wrapper a.demo {
+            background: transparent url(images/circle.png) no-repeat 50% 0px;
+            display: block;
+            width: 95px;
+            height: 41px;
+            text-decoration: none;
+            outline: none;
+            font-size: 16px;
+            color: #555;
+            float: left;
+            line-height: 41px;
+            padding-left: 47px;
+        }
+        
+        .book_wrapper a.demo {
+            margin-left: 50px;
+        }
+        
+        .book_wrapper a.article:hover,
+        .book_wrapper a.demo:hover {
+            background-position: 50% -41px;
+            color: #13386a;
+        }
+        
+        .book_wrapper img {
+            margin: 10px 0px 5px 35px;
+            width: 300px;
+            padding: 4px;
+            border: 1px solid #ddd;
+            -moz-box-shadow: 1px 1px 1px #fff;
+            -webkit-box-shadow: 1px 1px 1px #fff;
+            box-shadow: 1px 1px 1px #fff;
+        }
+        
+        .booklet .b-wrap-right img {
+            border: 1px solid #E6E3C2;
+        }
+        
+        a#next_page_button,
+        a#prev_page_button {
+            display: none;
+            position: absolute;
+            width: 41px;
+            height: 40px;
+            cursor: pointer;
+            margin-top: -20px;
+            top: 50%;
+            background: transparent url(images/buttons.png) no-repeat 0px -40px;
+        }
+        
+        a#prev_page_button {
+            left: -30px;
+        }
+        
+        a#next_page_button {
+            right: -30px;
+            background-position: -41px -40px;
+        }
+        
+        a#next_page_button:hover {
+            background-position: -41px 0px;
+        }
+        
+        a#prev_page_button:hover {
+            background-position: 0px 0px;
+        }
+        
+        img {
+            border: 5px solid #555;
+        }
+        
+        body {
+            margin: 20px;
+            background: hsl(70, 31%, 85%);
+            text-align: center;
+        }
+        
+        p {
+            font-size: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+        
+        .paragraph {
+            font-size: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+        
+        .balloon {
+            display: inline-block;
+            width: 120px;
+            height: 145px;
+            background: hsl(215, 50%, 65%);
+            border-radius: 80%;
+            position: relative;
+            box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.07);
+            margin: 20px 30px;
+            transition: transform 0.5s ease;
+            z-index: 10;
+            animation: balloons 4s ease-in-out infinite;
+            transform-origin: bottom center;
+        }
+        
+        @keyframes balloons {
+            0%,
+            100% {
+                transform: translateY(0) rotate(-4deg);
+            }
+            50% {
+                transform: translateY(-25px) rotate(4deg);
+            }
+        }
+        
+        .balloon:before {
+            content: "▲";
+            font-size: 20px;
+            color: hsl(215, 30%, 50%);
+            display: block;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            bottom: -12px;
+            z-index: -100;
+        }
+        
+        .balloon:after {
+            display: inline-block;
+            top: 153px;
+            position: absolute;
+            height: 250px;
+            width: 1px;
+            margin: 0 auto;
+            content: "";
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .balloon:nth-child(2) {
+            background: hsl(245, 40%, 65%);
+            animation-duration: 3.5s;
+        }
+        
+        .balloon:nth-child(2):before {
+            color: hsl(245, 40%, 65%);
+        }
+        
+        .balloon:nth-child(3) {
+            background: hsl(139, 50%, 60%);
+            animation-duration: 3s;
+        }
+        
+        .balloon:nth-child(3):before {
+            color: hsl(139, 30%, 50%);
+        }
+        
+        .balloon:nth-child(4) {
+            background: hsl(59, 50%, 58%);
+            animation-duration: 4.5s;
+        }
+        
+        .balloon:nth-child(4):before {
+            color: hsl(59, 30%, 52%);
+        }
+        
+        .balloon:nth-child(5) {
+            background: hsl(23, 55%, 57%);
+            animation-duration: 5s;
+        }
+        
+        .balloon:nth-child(5):before {
+            color: hsl(23, 44%, 46%);
+        }
+        
+        .wrapper .heart.x1 .heart.x2 .heart.x3 .heart.x4 .heart.x5 .altheart.x6 html,
+        body {
+            height: 100%;
+        }
+        
+        .wrapper {
+            width: 100%;
+            background: #f3f4f4;
+            min-height: 100%;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .x1 {
+            left: 5%;
+            -webkit-transform: scale(0.9);
+            -moz-transform: scale(0.9);
+            transform: scale(0.9);
+            opacity: 0.6;
+            -webkit-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
+            -moz-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
+        }
+        
+        .x2 {
+            left: 25%;
+            -webkit-transform: scale(0.6);
+            -moz-transform: scale(0.6);
+            transform: scale(0.6);
+            opacity: 0.9;
+            -webkit-animation: moveclouds 25s linear infinite, sideWays 5s ease-in-out infinite alternate;
+            -moz-animation: moveclouds 25s linear infinite, sideWays 5s ease-in-out infinite alternate;
+        }
+        
+        .x3 {
+            left: 55%;
+            -webkit-transform: scale(0.8);
+            -moz-transform: scale(0.8);
+            transform: scale(0.8);
+            opacity: 0.8;
+            -webkit-animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+            -moz-animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+        }
+        
+        .x4 {
+            left: 72%;
+            -webkit-transform: scale(0.75);
+            -moz-transform: scale(0.75);
+            transform: scale(0.75);
+            opacity: 0.9;
+            -webkit-animation: moveclouds 18s linear infinite, sideWays 2s ease-in-out infinite alternate;
+            -moz-animation: moveclouds 18s linear infinite, sideWays 0zs ease-in-out infinite alternate;
+        }
+        
+        .x5 {
+            left: 88%;
+            -webkit-transform: scale(0.8);
+            -moz-transform: scale(0.8);
+            transform: scale(0.8);
+            opacity: 0.3;
+            -webkit-animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
+            -moz-animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
+        }
+        
+        .x6 {
+            left: 33%;
+            opacity: 1;
+            -webkit-animation: moveclouds 2s linear infinite, swayWays 1s ease-in-out infinite alternate;
+            animation: moveclouds 10s linear infinite, swayWays 9s ease-in-out infinite alternate;
+        }
+        
+        @-webkit-keyframes moveclouds {
+            0% {
+                top: 500px;
+            }
+            100% {
+                top: -500px;
+            }
+        }
+        
+        @keyframes moveclouds {
+            0% {
+                top: 500px;
+            }
+            100% {
+                top: -500px;
+            }
+        }
+        
+        @-webkit-keyframes sideWays {
+            0% {
+                margin-left: 0px;
+            }
+            100% {
+                margin-left: 50px;
+            }
+        }
+        
+        @keyframes sideWays {
+            0% {
+                margin-left: 0px;
+            }
+            100% {
+                margin-left: 50px;
+            }
+        }
+        
+        @-keyframes swayWays {
+            0% {
+                transform: rotate(12deg);
+                left: -0.3%;
+            }
+            33% {
+                transform: rotate(-2deg);
+                left: 0.7%;
+            }
+            100% {
+                transform: rotate(0deg);
+                left: -12%;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <br><br><br><br><br>
+
+
+
+
+    <div class="book_wrapper">
+        <a id="next_page_button"></a>
+        <a id="prev_page_button"></a>
+
+        <div id="mybook" style="display:none;">
+
+            <div class="b-load">
+
+                <div>
+
+                    <p class="paragraph">
+                        <div class="balloon"></div>
+                        <center>But now I'm in pieces, barely believing Starting to think that I've lost all feeling
+                            <center/>
+                    </p>
+
+                </div>
+                <div>
+                    <img src="images/love1.jpg" height="440" alt="" />
+
+                </div>
+
+                <div>
+                    <p>
+                        <div class="balloon"></div>
+                        <center>You came out the blue on a rainy night, no lie
+                            <center/>
+                    </p>
+
+                </div>
+                <div>
+                    <img src="images/love2.jpg" height="440" alt="" />
+
+                </div>
+
+                <div>
+
+                    <p>
+                        <div class="balloon"></div>
+                        <center>I'll tell you how I almost died While you're bringing me back to life
+                            <center/>
+                    </p>
+
+                </div>
+
+                <div>
+                    <img src="images/love3.jpg" height="440" alt="" />
+
+
+                </div>
+
+                <div>
+                    <p>
+                        <div class="balloon"></div>
+                        <center>I just wanna live in this moment forever 'Cause I'm afraid that living couldn't get any better
+                            <center/>
+                    </p>
+
+                </div>
+
+                <div>
+                    <img src="images/love4.jpg" height="440" alt="" />
+
+                </div>
+
+                <div>
+                    <p>
+                        <div class="balloon"></div>
+                        <center>Started giving up on the word "forever" Until you gave up heaven so we could be together
+                            <center/>
+                    </p>
+
+                </div>
+
+                <div>
+                    <img src="images/love5.jpg" height="440" alt="" />
+
+                </div>
+
+                <div>
+                    <p>
+                        <div class="balloon"></div>
+                        <center>You're my angel Angel baby, angel <br>You're my angel, baby Baby, you're my angel angel baby
+                            <center/>
+                    </p>
+
+                </div>
+
+                <div>
+                    <img src="images/love6.jpg" height="440" alt="" />
+
+
+                </div>
+
+                <div>
+                    <p>
+                        <div class="balloon"></div>
+                        <center>Happy Birthday My Angel Baby!
+                            <center/>
+                    </p>
+
+                </div>
+
+                <div>
+                    <img src="images/love7.jpg" height="440" alt="" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            var $mybook = $('#mybook');
+            var $bttn_next = $('#next_page_button');
+            var $bttn_prev = $('#prev_page_button');
+            var $loading = $('#loading');
+            var $mybook_images = $mybook.find('img');
+            var cnt_images = $mybook_images.length;
+            var loaded = 0;
+
+            $mybook_images.each(function() {
+                var $img = $(this);
+                var source = $img.attr('src');
+                $('<img/>').load(function() {
+                    ++loaded;
+                    if (loaded == cnt_images) {
+                        $loading.hide();
+                        $bttn_next.show();
+                        $bttn_prev.show();
+                        $mybook.show().booklet({
+                            name: null, //  
+                            width: 800, //  
+                            height: 500, //   
+                            speed: 1000, //  
+                            direction: 'LTR', //  
+                            //  
+                            next: $bttn_next, //  
+                            prev: $bttn_prev, //  
+
+                        });
+                        Cufon.refresh();
+                    }
+                }).attr('src', source);
+            });
+
+        });
+        // <![CDATA[
+        var colours = new Array('#f00', '#f06', '#f0f', '#f6f', '#f39', '#f9c'); // colours of the hearts
+        var minisize = 10; // smallest size of hearts in pixels
+        var maxisize = 20; // biggest size of hearts in pixels
+        var hearts = 100; // maximum number of hearts on screen
+        var over_or_under = "over"; // set to "over" for hearts to always be on top, or "under" to allow them to float behind other objects
+
+        var x = ox = 400;
+        var y = oy = 300;
+        var swide = 800;
+        var shigh = 600;
+        var sleft = sdown = 0;
+        var herz = new Array();
+        var herzx = new Array();
+        var herzy = new Array();
+        var herzs = new Array();
+        var kiss = false;
+
+        if (typeof('addRVLoadEvent') != 'function')
+
+        function addRVLoadEvent(funky) {
+            var oldonload = window.onload;
+            if (typeof(oldonload) != 'function') window.onload = funky;
+            else window.onload = function() {
+                if (oldonload) oldonload();
+                funky();
+            }
+        }
+
+        addRVLoadEvent(mwah);
+
+        function mwah() {
+            if (document.getElementById) {
+                var i, heart;
+                for (i = 0; i < hearts; i++) {
+                    heart = createDiv("auto", "auto");
+                    heart.style.visibility = "hidden";
+                    heart.style.zIndex = (over_or_under == "over") ? "1001" : "0";
+                    heart.style.color = colours[i % colours.length];
+                    heart.style.pointerEvents = "none";
+                    if (navigator.appName == "Microsoft Internet Explorer") heart.style.filter = "alpha(opacity=75)";
+                    else heart.style.opacity = 0.45;
+                    heart.appendChild(document.createTextNode(String.fromCharCode(9829)));
+                    document.body.appendChild(heart);
+                    herz[i] = heart;
+                    herzy[i] = false;
+                }
+                set_scroll();
+                set_width();
+                herzle();
+            }
+        }
+
+        function herzle() {
+            var c;
+            if (Math.abs(x - ox) > 1 || Math.abs(y - oy) > 1) {
+                ox = x;
+                oy = y;
+                for (c = 0; c < hearts; c++)
+                    if (herzy[c] === false) {
+                        herz[c].firstChild.nodeValue = String.fromCharCode(9829);
+                        herz[c].style.left = (herzx[c] = x - minisize / 2) + "px";
+                        herz[c].style.top = (herzy[c] = y - minisize) + "px";
+                        herz[c].style.fontSize = minisize + "px";
+                        herz[c].style.fontWeight = 'normal';
+                        herz[c].style.visibility = 'visible';
+                        herzs[c] = minisize;
+                        break;
+                    }
+            }
+            for (c = 0; c < hearts; c++)
+                if (herzy[c] !== false) blow_me_a_kiss(c);
+            setTimeout("herzle()", 30);
+        }
+
+        document.onmousedown = pucker;
+        document.onmouseup = function() {
+            clearTimeout(kiss);
+        };
+
+        function pucker() {
+            ox = -1;
+            oy = -1;
+            kiss = setTimeout('pucker()', 100);
+        }
+
+        function blow_me_a_kiss(i) {
+            herzy[i] -= herzs[i] / minisize + i % 2;
+            herzx[i] += (i % 5 - 2) / 5;
+            if (herzy[i] < sdown - herzs[i] || herzx[i] < sleft - herzs[i] || herzx[i] > sleft + swide - herzs[i]) {
+                herz[i].style.visibility = "hidden";
+                herzy[i] = false;
+            } else if (herzs[i] > minisize + 1 && Math.random() < 2.5 / hearts) break_my_heart(i);
+            else {
+                if (Math.random() < maxisize / herzy[i] && herzs[i] < maxisize) herz[i].style.fontSize = (++herzs[i]) + "px";
+                herz[i].style.top = herzy[i] + "px";
+                herz[i].style.left = herzx[i] + "px";
+            }
+        }
+
+        function break_my_heart(i) {
+            var t;
+            herz[i].firstChild.nodeValue = String.fromCharCode(9676);
+            herz[i].style.fontWeight = 'bold';
+            herzy[i] = false;
+            for (t = herzs[i]; t <= maxisize; t++) setTimeout('herz[' + i + '].style.fontSize="' + t + 'px"', 60 * (t - herzs[i]));
+            setTimeout('herz[' + i + '].style.visibility="hidden";', 60 * (t - herzs[i]));
+        }
+
+        document.onmousemove = mouse;
+
+        function mouse(e) {
+            if (e) {
+                y = e.pageY;
+                x = e.pageX;
+            } else {
+                set_scroll();
+                y = event.y + sdown;
+                x = event.x + sleft;
+            }
+        }
+
+        window.onresize = set_width;
+
+        function set_width() {
+            var sw_min = 999999;
+            var sh_min = 999999;
+            if (document.documentElement && document.documentElement.clientWidth) {
+                if (document.documentElement.clientWidth > 0) sw_min = document.documentElement.clientWidth;
+                if (document.documentElement.clientHeight > 0) sh_min = document.documentElement.clientHeight;
+            }
+            if (typeof(self.innerWidth) == 'number' && self.innerWidth) {
+                if (self.innerWidth > 0 && self.innerWidth < sw_min) sw_min = self.innerWidth;
+                if (self.innerHeight > 0 && self.innerHeight < sh_min) sh_min = self.innerHeight;
+            }
+            if (document.body.clientWidth) {
+                if (document.body.clientWidth > 0 && document.body.clientWidth < sw_min) sw_min = document.body.clientWidth;
+                if (document.body.clientHeight > 0 && document.body.clientHeight < sh_min) sh_min = document.body.clientHeight;
+            }
+            if (sw_min == 999999 || sh_min == 999999) {
+                sw_min = 800;
+                sh_min = 600;
+            }
+            swide = sw_min;
+            shigh = sh_min;
+        }
+
+        window.onscroll = set_scroll;
+
+        function set_scroll() {
+            if (typeof(self.pageYOffset) == 'number') {
+                sdown = self.pageYOffset;
+                sleft = self.pageXOffset;
+            } else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
+                sdown = document.body.scrollTop;
+                sleft = document.body.scrollLeft;
+            } else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+                sleft = document.documentElement.scrollLeft;
+                sdown = document.documentElement.scrollTop;
+            } else {
+                sdown = 0;
+                sleft = 0;
+            }
+        }
+
+        function createDiv(height, width) {
+            var div = document.createElement("div");
+            div.style.position = "absolute";
+            div.style.height = height;
+            div.style.width = width;
+            div.style.overflow = "hidden";
+            div.style.backgroundColor = "transparent";
+            return (div);
+        }
+        // ]]>
+    </script>
+    <audio controls autoplay hidden="" src="song/angelbaby.mp3" type="audio/mp3" ">your browser does not support Html5</audio>
+</body>
+
+</html>
